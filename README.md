@@ -1,6 +1,6 @@
 # /TALK-BUTTON/
 
-A powerful voice-to-text application with OpenAI integration, built with PyQt6.
+A minimalistic voice-to-text desktop application with built with PyQt6.
 
 
 
