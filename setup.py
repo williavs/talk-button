@@ -1,5 +1,15 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 import os
+import shutil
+
+def copy_dylib():
+    """Copy libportaudio to the current directory."""
+    src = '/opt/homebrew/lib/libportaudio.2.dylib'
+    dst = 'libportaudio.2.dylib'
+    if os.path.exists(src):
+        shutil.copy2(src, dst)
+        return dst
+    return None
 
 APP = ['src/main.py']
 DATA_FILES = []
@@ -12,9 +22,10 @@ if os.path.exists('public/profile.jpeg'):
 if os.path.exists('public/app_icon.icns'):
     DATA_FILES.append(('public', ['public/app_icon.icns']))
 
-# Add libportaudio if it exists
-if os.path.exists('/opt/homebrew/lib/libportaudio.2.dylib'):
-    DATA_FILES.append(('lib', ['/opt/homebrew/lib/libportaudio.2.dylib']))
+# Copy and add libportaudio
+dylib_path = copy_dylib()
+if dylib_path:
+    DATA_FILES.append(('Frameworks', [dylib_path]))
 
 OPTIONS = {
     'argv_emulation': False,
@@ -27,6 +38,10 @@ OPTIONS = {
         'dotenv',
         'sounddevice',
         'soundfile',
+        'src',
+        'src.ui',
+        'src.core',
+        'src.utils',
     ],
     'includes': [
         'PyQt6.QtCore',
@@ -34,6 +49,10 @@ OPTIONS = {
         'PyQt6.QtWidgets',
         'numpy.core._methods',
         'numpy.lib.format',
+        'src.ui.main_window',
+        'src.ui.components',
+        'src.core.transcription',
+        'src.core.audio_recorder',
     ],
     'excludes': ['tkinter', 'matplotlib'],
     'iconfile': 'public/app_icon.icns' if os.path.exists('public/app_icon.icns') else None,
@@ -52,8 +71,13 @@ OPTIONS = {
 
 setup(
     name='Voice Prompt',
+    version='1.0.0',
+    author='William Van Sickle',
+    description='Voice-to-text application with OpenAI integration',
     app=APP,
     data_files=DATA_FILES,
+    packages=find_packages(),
+    include_package_data=True,
     options={'py2app': OPTIONS},
     setup_requires=['py2app'],
 ) 

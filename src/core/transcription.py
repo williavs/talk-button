@@ -86,7 +86,7 @@ Use only the context provided."""
 
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4o-mini",
                 temperature=0,
                 messages=[
                     {

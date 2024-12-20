@@ -19,17 +19,24 @@ pip install -r requirements.txt
 
 # Clean previous builds
 echo "🧹 Cleaning previous builds..."
-rm -rf build dist
+sudo rm -rf build dist libportaudio.2.dylib
 
 # Build the application
 echo "🔨 Building application..."
 python setup.py py2app
+
+# Fix permissions
+echo "🔒 Setting permissions..."
+sudo chown -R $USER:staff "dist/Voice Prompt.app"
 
 # Create ZIP for distribution
 echo "📦 Creating ZIP archive..."
 cd dist
 zip -r "Voice-Prompt-Mac.zip" "Voice Prompt.app"
 cd ..
+
+# Clean up
+rm -f libportaudio.2.dylib
 
 # Deactivate virtual environment
 deactivate

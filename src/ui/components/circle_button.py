@@ -13,7 +13,7 @@ class CircleButton(QPushButton):
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         # State text label
-        self.state_text = QLabel("ready")
+        self.state_text = QLabel("Ready")
         self.state_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
         font = QFont('Inter', 14)
         font.setWeight(QFont.Weight.Medium)
@@ -65,10 +65,10 @@ class CircleButton(QPushButton):
     def update_state(self, state: str):
         """Update the button state text."""
         state_text_map = {
-            "ready": "ready",
-            "recording": "recording...",
-            "processing": "processing...",
-            "api_missing": "set API key"
+            "ready": "Ready",
+            "recording": "Recording...",
+            "processing": "Processing...",
+            "api_missing": "Set API key"
         }
         self.state_text.setText(state_text_map.get(state, state))
         
