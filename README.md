@@ -131,25 +131,24 @@ See our [Feature Wishlist](docs/WISHLIST.md) for planned improvements.
 
 ## Use Cases
 
-1. **Meeting Notes**
-   - Record discussions
-   - Get accurate transcriptions
-   - Share with team members
 
-2. **Content Creation**
-   - Dictate blog posts
-   - Record podcast notes
-   - Draft social media content
+1. **AI Prompt Engineering**
+   - Rapid prompt iteration
+   - Voice-based prompt testing
+   - Quick prompt refinement
+   - Context preservation
 
-3. **Personal Productivity**
-   - Voice memos
-   - Quick notes
-   - Task lists
+2. **Quick Voice-to-Text**
+   - Command line instructions
+   - Code comments and TODOs
+   - Bug report dictation
+   - Quick documentation notes
 
-4. **Accessibility**
-   - Voice-to-text input
-   - Audio documentation
-   - Hands-free operation
+3. **Development Workflows**
+   - Stand-up meeting notes
+   - Code review comments
+   - Git commit messages
+   - Project planning thoughts
 
 ## Technical Details
 
